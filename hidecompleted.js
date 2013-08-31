@@ -42,9 +42,7 @@ BBLog.handle("add.plugin", {
 
 
     hideCompleted : function() {
-        // ukrycie podziału na dlc
-        $('.assignments-container h1').hide();
-        // ukrycie strzałek
+        // ukrycie strzałek zależności między zadaniami
         $('.progress-arrow-vertical').hide();
         $('.progress-arrow.completed').hide();
         // ukrycie ukończonych zadań
