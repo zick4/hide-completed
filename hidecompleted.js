@@ -36,14 +36,12 @@ BBLog.handle("add.plugin", {
     *    For example: If you add a new function to your addon, always pass the "instance" object
     */
     init : function(instance){
-        console.info("inicjalizacja pluginu");
         this.hideCompleted();
 
     },
 
 
     hideCompleted : function() {
-        console.info("uruchomienie hideCompleted");
         $('.assignments-container h1').hide();
         $('.assignments_details').hide();
         $('.progress-arrow-vertical').hide();
