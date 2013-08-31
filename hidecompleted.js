@@ -42,10 +42,14 @@ BBLog.handle("add.plugin", {
 
 
     hideCompleted : function() {
+        // ukrycie podziału na dlc
         $('.assignments-container h1').hide();
-        $('.assignments_details').hide();
+        // ukrycie strzałek
         $('.progress-arrow-vertical').hide();
+        $('.progress-arrow.completed').hide();
+        // ukrycie ukończonych zadań
         $('div.assignment_completed').closest('td').hide();
+        // ukrycie dlc bez zadań do zrobienia
         $('.assignments-group table:hidden').closest('.assignments-group').hide();
     }
 
