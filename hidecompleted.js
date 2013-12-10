@@ -26,7 +26,17 @@ BBLog.handle("add.plugin", {
     */
     name : "Hide Completed Assigments",
 
+    /**
+     * Game Adapter
+     *
+     * null|object
+     */
+    adapter : null,
 
+    /**
+     * Plugin is loaded
+     */
+    needToLoad : false,
 
     /**
     * A handler that be fired immediately (only once) after the plugin is loaded into bblog
@@ -35,13 +45,44 @@ BBLog.handle("add.plugin", {
     *    Always use "instance" to access any plugin related function, not use "this" because it's not working properly
     *    For example: If you add a new function to your addon, always pass the "instance" object
     */
-    init : function(instance){
-        this.hideCompleted();
+    init : function(plugin){
+        var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
+            isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
+        plugin.needToLoad = isBf3 || isBf4;
+        if (plugin.needToLoad) {
+            $(document).ready(function(){
+                // wczytanie odpowiedniego adaptera
+                if (isBf3) {
+                    console.info("wczytano adapter bf3");
+                    plugin.adapter = new Bf3Adapter(plugin);
+                } else if (isBf4) {
+                    console.info("wczytano adapter bf4");
+                    plugin.adapter = new Bf4Adapter(plugin);
+                } else {
+                    throw "unexpected exception";
+                }
+
+                // tworzymy formularz
+                plugin.adapter.hideCompleted();
+
+            });
+        }
 
     },
 
 
-    hideCompleted : function() {
+});
+
+/**
+ * Battlefield 3 adapter
+ *
+ * @param {Object} plugin
+ */
+function Bf3Adapter(plugin) {
+
+    this.plugin = plugin;
+
+    this.hideCompleted = function() {
         // ukrycie strzałek zależności między zadaniami
         $('.progress-arrow-vertical').hide();
         $('.progress-arrow.completed').hide();
@@ -50,5 +91,22 @@ BBLog.handle("add.plugin", {
         // ukrycie dlc bez zadań do zrobienia
         $('.assignments-group table:hidden').closest('.assignments-group').hide();
     }
+}
+/**
+ * Battlefield 4 adapter
+ *
+ * @param {Object} plugin
+ */
+function Bf4Adapter(plugin) {
 
-});
+    this.plugin = plugin;
+
+    this.hideCompleted = function() {
+        $('li.completed').remove();
+        $('div.stat-box').each(function(){
+            if ($(this).find('li').length === 0) {
+                $(this).remove();
+            }
+        });
+    }
+}
