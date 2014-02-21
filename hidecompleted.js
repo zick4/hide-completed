@@ -49,6 +49,7 @@ BBLog.handle("add.plugin", {
         var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
             isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
         plugin.needToLoad = isBf3 || isBf4;
+        console.log(plugin.needToLoad);
         if (plugin.needToLoad) {
             $(document).ready(function(){
                 // wczytanie odpowiedniego adaptera
