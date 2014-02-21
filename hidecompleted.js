@@ -31,7 +31,7 @@ BBLog.handle("add.plugin", {
      *
      * null|object
      */
-    adapter : null,
+    adapterH : null,
 
     /**
      * Plugin is loaded
@@ -54,16 +54,16 @@ BBLog.handle("add.plugin", {
                 // wczytanie odpowiedniego adaptera
                 if (isBf3) {
                     console.info("wczytano adapter bf3");
-                    plugin.adapter = new Bf3Adapter(plugin);
+                    plugin.adapterH = new Bf3AdapterH(plugin);
                 } else if (isBf4) {
                     console.info("wczytano adapter bf4");
-                    plugin.adapter = new Bf4Adapter(plugin);
+                    plugin.adapterH = new Bf4AdapterH(plugin);
                 } else {
                     throw "unexpected exception";
                 }
 
                 // tworzymy formularz
-                plugin.adapter.hideCompleted();
+                plugin.adapterH.hideCompleted();
 
             });
         }
@@ -78,7 +78,7 @@ BBLog.handle("add.plugin", {
  *
  * @param {Object} plugin
  */
-function Bf3Adapter(plugin) {
+function Bf3AdapterH(plugin) {
 
     this.plugin = plugin;
 
@@ -97,7 +97,7 @@ function Bf3Adapter(plugin) {
  *
  * @param {Object} plugin
  */
-function Bf4Adapter(plugin) {
+function Bf4AdapterH(plugin) {
 
     this.plugin = plugin;
 
