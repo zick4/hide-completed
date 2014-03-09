@@ -46,35 +46,10 @@ BBLog.handle("add.plugin", {
     *    For example: If you add a new function to your addon, always pass the "instance" object
     */
     init : function(plugin){
-        var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
-            isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
-        plugin.needToLoad = isBf3 || isBf4;
-        if (plugin.needToLoad) {
-            $(document).ready(function(){
-                // wczytanie odpowiedniego adaptera
-                if (isBf3) {
-                    console.info("wczytano adapter bf3");
-                    plugin.adapterH = new Bf3AdapterH(plugin);
-                } else if (isBf4) {
-                    console.info("wczytano adapter bf4");
-                    plugin.adapterH = new Bf4AdapterH(plugin);
-                } else {
-                    throw "unexpected exception";
-                }
+        setInterval(function(){
+            var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
+                isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
 
-                // tworzymy formularz
-                plugin.adapterH.hideCompleted();
-
-            });
-        }
-
-    },
-    domchange : function(plugin){
-        console.log("domchange");
-        var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
-            isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
-        plugin.needToLoad = isBf3 || isBf4;
-        if (plugin.needToLoad) {
             // wczytanie odpowiedniego adaptera
             if (isBf3) {
                 console.info("wczytano adapter bf3");
@@ -83,16 +58,13 @@ BBLog.handle("add.plugin", {
                 console.info("wczytano adapter bf4");
                 plugin.adapterH = new Bf4AdapterH(plugin);
             } else {
-                throw "unexpected exception";
+                return;
             }
 
             // tworzymy formularz
             plugin.adapterH.hideCompleted();
-
-        }
-    }
-
-
+        }, 2000);
+    },
 });
 
 /**
