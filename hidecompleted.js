@@ -49,7 +49,6 @@ BBLog.handle("add.plugin", {
         var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
             isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
         plugin.needToLoad = isBf3 || isBf4;
-        console.log(plugin.needToLoad);
         if (plugin.needToLoad) {
             $(document).ready(function(){
                 // wczytanie odpowiedniego adaptera
@@ -70,6 +69,27 @@ BBLog.handle("add.plugin", {
         }
 
     },
+    domchange : function(plugin){
+        var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
+            isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
+        plugin.needToLoad = isBf3 || isBf4;
+        if (plugin.needToLoad) {
+            // wczytanie odpowiedniego adaptera
+            if (isBf3) {
+                console.info("wczytano adapter bf3");
+                plugin.adapterH = new Bf3AdapterH(plugin);
+            } else if (isBf4) {
+                console.info("wczytano adapter bf4");
+                plugin.adapterH = new Bf4AdapterH(plugin);
+            } else {
+                throw "unexpected exception";
+            }
+
+            // tworzymy formularz
+            plugin.adapterH.hideCompleted();
+
+        }
+    }
 
 
 });
