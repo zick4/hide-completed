@@ -63,7 +63,7 @@ BBLog.handle("add.plugin", {
 
             // tworzymy formularz
             plugin.adapterH.hideCompleted();
-        }, 2000);
+        }, 4000);
     },
 });
 
