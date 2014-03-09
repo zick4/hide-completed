@@ -70,6 +70,7 @@ BBLog.handle("add.plugin", {
 
     },
     domchange : function(plugin){
+        console.log("domchange");
         var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
             isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
         plugin.needToLoad = isBf3 || isBf4;
