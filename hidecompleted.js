@@ -94,19 +94,13 @@ function Bf4AdapterH(plugin) {
     this.plugin = plugin;
 
     this.hideCompleted = function() {
-        $('li.completed').remove();
-        $('div.stat-box').each(function(){
-            if ($(this).find('li').length === 0) {
-                $(this).remove();
-            }
-        });
-
         this.buldForm();
         this.filter();
     };
 
     this.buldForm - function() {
-        var form = '\
+        var plugin = this,
+            form = '\
         <div class="filters-container">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
@@ -139,6 +133,9 @@ function Bf4AdapterH(plugin) {
     };
 
     this.filter = function() {
+
+        $('li.completed').hide();
+
         if ($('.filters-container li').hasClass('on')) {
             $('li.locked').show();
         } else {
