@@ -95,7 +95,10 @@ function Bf4AdapterH(plugin) {
     this.builded = false;
 
     this.hideCompleted = function() {
-        this.buldForm();
+        if (this.builded === false) {
+            this.buldForm();
+            this.builded = true;
+        }
         this.filter();
     };
 
@@ -117,22 +120,21 @@ function Bf4AdapterH(plugin) {
                 </div>\n\
             </div>\n\
         </div>';
-        if (this.builded === false) {
-            $('.submenu.margin-top').after(form);
-            $('.filters-container li').click(function(){
-                if ($(this).hasClass('on')) {
-                    $(this).removeClass('on');
-                    $(this).addClass('off');
-                    $(this).text('Zadania zablokowane są ukryte');
-                } else {
-                    $(this).removeClass('off');
-                    $(this).addClass('on');
-                    $(this).text('Zadania zablokowane są widoczne');
-                }
-                plugin.filter();
-            });
-            this.builded = true;
-        }
+        
+        $('.submenu.margin-top').after(form);
+        $('.filters-container li').click(function(){
+            if ($(this).hasClass('on')) {
+                $(this).removeClass('on');
+                $(this).addClass('off');
+                $(this).text('Zadania zablokowane są ukryte');
+            } else {
+                $(this).removeClass('off');
+                $(this).addClass('on');
+                $(this).text('Zadania zablokowane są widoczne');
+            }
+            plugin.filter();
+        });
+            
 
     };
 
