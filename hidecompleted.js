@@ -98,7 +98,7 @@ function Bf4AdapterH(plugin) {
         this.filter();
     };
 
-    this.buldForm - function() {
+    this.buldForm = function() {
         var plugin = this,
             form = '\
         <div class="filters-container">\n\
