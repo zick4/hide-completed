@@ -52,10 +52,8 @@ BBLog.handle("add.plugin", {
 
             // wczytanie odpowiedniego adaptera
             if (isBf3) {
-                console.info("wczytano adapter bf3");
                 plugin.adapterH = new Bf3AdapterH(plugin);
             } else if (isBf4) {
-                console.info("wczytano adapter bf4");
                 plugin.adapterH = new Bf4AdapterH(plugin);
             } else {
                 return;
@@ -64,7 +62,7 @@ BBLog.handle("add.plugin", {
             // tworzymy formularz
             plugin.adapterH.hideCompleted();
         }, 2000);
-    },
+    }
 });
 
 /**
@@ -84,7 +82,7 @@ function Bf3AdapterH(plugin) {
         $('div.assignment_completed').closest('td').hide();
         // ukrycie dlc bez zadań do zrobienia
         $('.assignments-group table:hidden').closest('.assignments-group').hide();
-    }
+    };
 }
 /**
  * Battlefield 4 adapter
@@ -102,5 +100,57 @@ function Bf4AdapterH(plugin) {
                 $(this).remove();
             }
         });
-    }
+
+        this.buldForm();
+        this.filter();
+    };
+
+    this.buldForm - function() {
+        var form = '\
+        <div class="filters-container">\n\
+            <div class="row-tight spacing-top-tight">\n\
+                <div class="filter-col span1-04 box box-content">\n\
+                <section class="filter split">\n\
+                <ul>\n\
+                    <li class="off">\n\
+                        <input type="checkbox" id="x" name="x"><label class="" for="x">\n\
+                            Zadania zablokowane są ukryte\n\
+                        </label>\n\
+                    </li>\n\
+                </ul>\n\
+                </section>\n\
+                </div>\n\
+            </div>\n\
+        </div>';
+        $('.submenu.margin-top').after(form);
+        $('.filters-container li').click(function(){
+            if ($(this).hasClass('on')) {
+                $(this).removeClass('on');
+                $(this).addClass('off');
+                $(this).text('Zadania zablokowane są ukryte');
+            } else {
+                $(this).removeClass('off');
+                $(this).addClass('on');
+                $(this).text('Zadania zablokowane są widoczne');
+            }
+            plugin.filter();
+        });
+
+    };
+
+    this.filter = function() {
+        if ($('.filters-container li').hasClass('on')) {
+            $('li.locked').show();
+        } else {
+            $('li.locked').hide();
+        }
+
+        $('.stat-box').each(function() {
+            if ($(this).find("li:visible").length === 0) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    };
 }
