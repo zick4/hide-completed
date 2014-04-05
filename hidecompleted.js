@@ -95,6 +95,7 @@ function Bf4AdapterH(plugin) {
     this.builded = false;
 
     this.hideCompleted = function() {
+        console.log(this.builded);
         if (this.builded === false) {
             this.buldForm();
             this.builded = true;
