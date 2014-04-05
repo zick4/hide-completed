@@ -93,13 +93,10 @@ function Bf3AdapterH(plugin) {
 function Bf4AdapterH(plugin) {
 
     this.plugin = plugin;
-    this.builded = false;
 
     this.hideCompleted = function() {
-        console.log(this.builded);
-        if (this.builded === false) {
+        if ($('#hide-completed').length === 0) {
             this.buldForm();
-            this.builded = true;
         }
         this.filter();
     };
@@ -113,7 +110,7 @@ function Bf4AdapterH(plugin) {
                 <section class="filter split">\n\
                 <ul>\n\
                     <li class="off">\n\
-                        <input type="checkbox" id="x" name="x"><label class="" for="x">\n\
+                        <input type="checkbox" id="hide-completed" name="x"><label class="" for="x">\n\
                             Zadania zablokowane są ukryte\n\
                         </label>\n\
                     </li>\n\
