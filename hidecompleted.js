@@ -105,12 +105,13 @@ function Bf4AdapterH(plugin) {
         var plugin = this,
             form = '\
         <div class="filters-container">\n\
+            <div id="hide-completed-checker" style="display: none;">.</div>\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
                 <section class="filter split">\n\
                 <ul>\n\
                     <li class="off">\n\
-                        <input type="checkbox" id="hide-completed-checker" name="x"><label class="" for="x">\n\
+                        <input type="checkbox" id="xxx" name="xxx"><label class="" for="xxx">\n\
                             Zadania zablokowane są ukryte\n\
                         </label>\n\
                     </li>\n\
