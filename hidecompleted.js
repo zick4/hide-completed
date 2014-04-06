@@ -131,7 +131,7 @@ function Bf4AdapterH(plugin) {
                 $(this).removeClass('on');
                 $(this).addClass('off');
                 $(this).text('Zadania ukończone są ukryte');
-                $("#hidden-assigments-status").val('2');
+                $("#hidden-assigments-status").text('2');
             } else if ($("#hidden-assigments-status").text() === '2') {
                 $(this).removeClass('on');
                 $(this).addClass('off');
