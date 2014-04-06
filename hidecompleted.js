@@ -103,6 +103,7 @@ function Bf4AdapterH(plugin) {
     };
 
     this.buldForm = function() {
+        console.info("Budowanie formularza");
         var adapter = this,
             plugin = this.plugin,
             form = '\
