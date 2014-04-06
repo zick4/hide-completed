@@ -134,7 +134,7 @@ function Bf4AdapterH(plugin) {
             $(form).find('#hidden-assigments-status').text('Zadania zablokowane są ukryte');
             $(form).find('.filters-container li').addClass('off');
         } else {
-            plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text(1));
+            plugin.storage('hidden-assigments-status', 1);
             console.info("Zapisany stan");
             console.log(plugin.storage('hidden-assigments-status'));
             console.log($("#hidden-assigments-status").text());
