@@ -112,9 +112,10 @@ function Bf4AdapterH(plugin) {
                 <div class="filter-col span1-04 box box-content">\n\
                 <section class="filter split">\n\
                 <ul>\n\
-                    <li class="off">\n\
+                    <li class="on">\n\
+                        <input id="hidden-assigments-status" type="hidden" name="status" value="1">\n\
                         <input type="checkbox" id="xxx" name="xxx"><label class="" for="xxx">\n\
-                            Zadania zablokowane są ukryte\n\
+                            Wszystkie zadania są widoczne\n\
                         </label>\n\
                     </li>\n\
                 </ul>\n\
@@ -125,14 +126,21 @@ function Bf4AdapterH(plugin) {
         
         $('.submenu.margin-top').after(form);
         $('.filters-container li').click(function(){
-            if ($(this).hasClass('on')) {
+            if ($("#hidden-assigments-status").val() === 1) {
+                $(this).removeClass('on');
+                $(this).addClass('off');
+                $(this).text('Zadania ukończone są ukryte');
+                $("#hidden-assigments-status").val(2);
+            } else if ($("#hidden-assigments-status").val() === 2) {
                 $(this).removeClass('on');
                 $(this).addClass('off');
                 $(this).text('Zadania zablokowane są ukryte');
+                $("#hidden-assigments-status").val(3);
             } else {
                 $(this).removeClass('off');
                 $(this).addClass('on');
-                $(this).text('Zadania zablokowane są widoczne');
+                $(this).text('Wszystkie zadania są widoczne');
+                $("#hidden-assigments-status").val(1);
             }
             plugin.filter();
         });
@@ -142,10 +150,10 @@ function Bf4AdapterH(plugin) {
 
     this.filter = function() {
 
-        $('li.completed').hide();
-
-        if ($('.filters-container li').hasClass('on')) {
-            $('li.locked').show();
+        if ($("#hidden-assigments-status").val() === 1) {
+            $('.assignments-list li').show();
+        } else if ($("#hidden-assigments-status").val() === 2) {
+            $('li.completed').hide();
         } else {
             $('li.locked').hide();
         }
