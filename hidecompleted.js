@@ -106,7 +106,7 @@ function Bf4AdapterH(plugin) {
     this.buldForm = function() {
         var plugin = this,
             form = '\
-        <input id="hidden-assigments-status" type="hidden" name="hidden-assigments-status" value="1">\n\
+        <div id="hidden-assigments-status" style="display: none;">1</div>\n\
         <div class="filters-container">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
@@ -127,21 +127,21 @@ function Bf4AdapterH(plugin) {
         console.info($("#hidden-assigments-status"));
         $('.filters-container li').click(function(){
             console.info("klik");
-            if ($("#hidden-assigments-status").val() === 1) {
+            if ($("#hidden-assigments-status").text() === '1') {
                 $(this).removeClass('on');
                 $(this).addClass('off');
                 $(this).text('Zadania ukończone są ukryte');
-                $("#hidden-assigments-status").val(2);
-            } else if ($("#hidden-assigments-status").val() === 2) {
+                $("#hidden-assigments-status").val('2');
+            } else if ($("#hidden-assigments-status").text() === '2') {
                 $(this).removeClass('on');
                 $(this).addClass('off');
                 $(this).text('Zadania zablokowane są ukryte');
-                $("#hidden-assigments-status").val(3);
+                $("#hidden-assigments-status").text('3');
             } else {
                 $(this).removeClass('off');
                 $(this).addClass('on');
                 $(this).text('Wszystkie zadania są widoczne');
-                $("#hidden-assigments-status").val(1);
+                $("#hidden-assigments-status").text('1');
             }
             plugin.filter();
         });
