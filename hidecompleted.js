@@ -149,9 +149,9 @@ function Bf4AdapterH(plugin) {
 
     this.filter = function() {
 
-        if ($("#hidden-assigments-status").val() === 1) {
+        if ($("#hidden-assigments-status").text() == 1) {
             $('.assignments-list li').show();
-        } else if ($("#hidden-assigments-status").val() === 2) {
+        } else if ($("#hidden-assigments-status").text() == 2) {
             $('li.completed').hide();
         } else {
             $('li.locked').hide();
