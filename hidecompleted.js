@@ -107,7 +107,7 @@ function Bf4AdapterH(plugin) {
         var plugin = this,
             form = '\
         <div class="filters-container">\n\
-            <div id="hide-completed-checker" style="display: none;">.</div>\n\
+            <input id="hide-completed-checker" style="display: none;">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
                 <section class="filter split">\n\
