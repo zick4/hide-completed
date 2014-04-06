@@ -104,11 +104,12 @@ function Bf4AdapterH(plugin) {
     };
 
     this.buldForm = function() {
-        console.info("Budowanie formularza");
         var adapter = this,
             plugin = this.plugin,
+            text,
+            classAttribute,
             form = '\
-        <div id="hidden-assigments-status" style="display: none;">1</div>\n\
+        <div id="hidden-assigments-status" style="display: none;">%d</div>\n\
         <div class="filters-container">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
@@ -116,7 +117,7 @@ function Bf4AdapterH(plugin) {
                 <ul>\n\
                     <li class="on">\n\
                         <input type="checkbox" id="xxx" name="xxx"><label class="" for="xxx">\n\
-                            Wszystkie zadania są widoczne\n\
+                            %s\n\
                         </label>\n\
                     </li>\n\
                 </ul>\n\
@@ -125,19 +126,20 @@ function Bf4AdapterH(plugin) {
             </div>\n\
         </div>',
             status = plugin.storage('hidden-assigments-status');
-    console.info("Wczytany stan");
-    console.log(status);
+
         if (status == 2) {
-            $(form).find('#hidden-assigments-status').text('Zadania ukończone są ukryte');
-            $(form).find('.filters-container li').addClass('off');
+            classAttribute = 'off';
+            text = 'Zadania ukończone są ukryte';
+            classAttribute = 'off';
         } else if (status == 3) {
-            $(form).find('#hidden-assigments-status').text('Zadania zablokowane są ukryte');
-            $(form).find('.filters-container li').addClass('off');
+            classAttribute = 'off';
+            text = 'Zadania zablokowane są ukryte';
+            classAttribute = 'off';
         } else {
+            status = 1;
+            text = 'Wszystkie zadania są widoczne',
+            classAttribute='on';
             plugin.storage('hidden-assigments-status', 1);
-            console.info("Zapisany stan");
-            console.log(plugin.storage('hidden-assigments-status'));
-            console.log($("#hidden-assigments-status").text());
         }
         
         $('.submenu.margin-top').after(form);
@@ -160,9 +162,6 @@ function Bf4AdapterH(plugin) {
             }
             
             plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text());
-            console.info("Zapisany stan");
-            console.log(plugin.storage('hidden-assigments-status'));
-            console.log($("#hidden-assigments-status").text());
             adapter.filter();
         });
             
