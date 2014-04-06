@@ -123,6 +123,8 @@ function Bf4AdapterH(plugin) {
             </div>\n\
         </div>',
             status = plugin.storage('hidden-assigments-status');
+    console.info("Wczytany stan");
+    console.log(status);
         if (status == 2) {
             $(form).find('#hidden-assigments-status').text('Zadania ukończone są ukryte');
             $(form).find('.filters-container li').addClass('off');
@@ -153,6 +155,8 @@ function Bf4AdapterH(plugin) {
             }
             
             plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text());
+            console.info("Zapisany stan");
+            console.log($("#hidden-assigments-status").text());
             adapter.filter();
         });
             
