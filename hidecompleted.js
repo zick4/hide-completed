@@ -124,24 +124,22 @@ function Bf4AdapterH(plugin) {
         </div>';
         
         $('.submenu.margin-top').after(form);
-        console.info($("#hidden-assigments-status"));
         $('.filters-container li').click(function(){
-            console.info("klik");
-            if ($("#hidden-assigments-status").text() === '1') {
+            if ($("#hidden-assigments-status").text() == 1) {
                 $(this).removeClass('on');
                 $(this).addClass('off');
                 $(this).text('Zadania ukończone są ukryte');
-                $("#hidden-assigments-status").text('2');
-            } else if ($("#hidden-assigments-status").text() === '2') {
+                $("#hidden-assigments-status").text(2);
+            } else if ($("#hidden-assigments-status").text() == 2) {
                 $(this).removeClass('on');
                 $(this).addClass('off');
                 $(this).text('Zadania zablokowane są ukryte');
-                $("#hidden-assigments-status").text('3');
+                $("#hidden-assigments-status").text(3);
             } else {
                 $(this).removeClass('off');
                 $(this).addClass('on');
                 $(this).text('Wszystkie zadania są widoczne');
-                $("#hidden-assigments-status").text('1');
+                $("#hidden-assigments-status").text(1);
             }
             plugin.filter();
         });
