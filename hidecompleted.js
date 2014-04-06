@@ -104,7 +104,8 @@ function Bf4AdapterH(plugin) {
     };
 
     this.buldForm = function() {
-        var plugin = this,
+        var adapter = this,
+            plugin = this.plugin,
             form = '\
         <div id="hidden-assigments-status" style="display: none;">1</div>\n\
         <div class="filters-container">\n\
@@ -153,7 +154,7 @@ function Bf4AdapterH(plugin) {
             }
             
             plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text());
-            plugin.filter();
+            adapter.filter();
         });
             
 
