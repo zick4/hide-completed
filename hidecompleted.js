@@ -139,7 +139,7 @@ function Bf4AdapterH(plugin) {
             classAttribute = 'off';
         } else if (status == 3) {
             classAttribute = 'off';
-            text = 'Zadania zablokowane są ukryte';
+            text = 'Zadania zablokowane i ukończone są ukryte';
             classAttribute = 'off';
         } else {
             status = 1;
@@ -158,7 +158,7 @@ function Bf4AdapterH(plugin) {
             } else if ($("#hidden-assigments-status").text() == 2) {
                 $(this).removeClass('on');
                 $(this).addClass('off');
-                $(this).text('Zadania zablokowane są ukryte');
+                $(this).text('Zadania zablokowane i ukończone są ukryte');
                 $("#hidden-assigments-status").text(3);
             } else {
                 $(this).removeClass('off');
@@ -181,6 +181,7 @@ function Bf4AdapterH(plugin) {
         } else if ($("#hidden-assigments-status").text() == 2) {
             $('li.completed').hide();
         } else {
+            $('li.completed').hide();
             $('li.locked').hide();
         }
 
