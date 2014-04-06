@@ -107,13 +107,12 @@ function Bf4AdapterH(plugin) {
         var plugin = this,
             form = '\
         <div class="filters-container">\n\
-            <input id="hide-completed-checker" style="display: none;">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
                 <section class="filter split">\n\
                 <ul>\n\
                     <li class="on">\n\
-                        <input id="hidden-assigments-status" type="hidden" name="status" value="1">\n\
+                        <input id="hidden-assigments-status" type="hidden" name="hidden-assigments-status" value="1">\n\
                         <input type="checkbox" id="xxx" name="xxx"><label class="" for="xxx">\n\
                             Wszystkie zadania są widoczne\n\
                         </label>\n\
