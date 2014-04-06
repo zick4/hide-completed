@@ -8,7 +8,13 @@
 * @version 1.0
 * @url http://getbblog.com
 */
-
+String.prototype.format = function() {
+    var formatted = this;
+    for( var arg in arguments ) {
+        formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+    }
+    return formatted;
+};
 // initialize your plugin
 BBLog.handle("add.plugin", {
 
@@ -109,15 +115,15 @@ function Bf4AdapterH(plugin) {
             text,
             classAttribute,
             form = '\
-        <div id="hidden-assigments-status" style="display: none;">%d</div>\n\
+        <div id="hidden-assigments-status" style="display: none;">{0}</div>\n\
         <div class="filters-container">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
                 <section class="filter split">\n\
                 <ul>\n\
-                    <li class="on">\n\
+                    <li class="{1}">\n\
                         <input type="checkbox" id="xxx" name="xxx"><label class="" for="xxx">\n\
-                            %s\n\
+                            {2}\n\
                         </label>\n\
                     </li>\n\
                 </ul>\n\
@@ -142,7 +148,7 @@ function Bf4AdapterH(plugin) {
             plugin.storage('hidden-assigments-status', 1);
         }
         
-        $('.submenu.margin-top').after(form);
+        $('.submenu.margin-top').after(form.format(status, classAttribute, text));
         $('.filters-container li').click(function(){
             if ($("#hidden-assigments-status").text() == 1) {
                 $(this).removeClass('on');
