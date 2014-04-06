@@ -92,6 +92,7 @@ function Bf3AdapterH(plugin) {
 function Bf4AdapterH(plugin) {
 
     this.plugin = plugin;
+    
     $('.stat-list-col > li').css('margin', 0);
     $('.stat-list-col > li').css('border', '0.1px solid #4E5A6A');
 
@@ -125,7 +126,6 @@ function Bf4AdapterH(plugin) {
         </div>',
             status = plugin.storage('hidden-assigments-status');
     console.info("Wczytany stan");
-    console.log(plugin);
     console.log(status);
         if (status == 2) {
             $(form).find('#hidden-assigments-status').text('Zadania ukończone są ukryte');
@@ -136,7 +136,7 @@ function Bf4AdapterH(plugin) {
         } else {
             plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text(1));
             console.info("Zapisany stan");
-            console.log(plugin);
+            console.log(plugin.storage('hidden-assigments-status'));
             console.log($("#hidden-assigments-status").text());
         }
         
@@ -161,7 +161,7 @@ function Bf4AdapterH(plugin) {
             
             plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text());
             console.info("Zapisany stan");
-            console.log(plugin);
+            console.log(plugin.storage('hidden-assigments-status'));
             console.log($("#hidden-assigments-status").text());
             adapter.filter();
         });
