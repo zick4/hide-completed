@@ -121,7 +121,17 @@ function Bf4AdapterH(plugin) {
                 </section>\n\
                 </div>\n\
             </div>\n\
-        </div>';
+        </div>',
+            status = plugin.storage('hidden-assigments-status');
+        if (status == 2) {
+            $(form).find('#hidden-assigments-status').text('Zadania ukończone są ukryte');
+            $(form).find('.filters-container li').addClass('off');
+        } else if (status == 3) {
+            $(form).find('#hidden-assigments-status').text('Zadania zablokowane są ukryte');
+            $(form).find('.filters-container li').addClass('off');
+        } else {
+            plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text(1));
+        }
         
         $('.submenu.margin-top').after(form);
         $('.filters-container li').click(function(){
@@ -141,6 +151,8 @@ function Bf4AdapterH(plugin) {
                 $(this).text('Wszystkie zadania są widoczne');
                 $("#hidden-assigments-status").text(1);
             }
+            
+            plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text());
             plugin.filter();
         });
             
