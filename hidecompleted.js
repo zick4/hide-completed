@@ -100,7 +100,7 @@ function Bf4AdapterH(plugin) {
     this.plugin = plugin;
     
     $('.stat-list-col > li').css('margin', 0);
-    $('.stat-list-col > li').css('border', '0.1px solid #4E5A6A');
+    $('.stat-list-col > li').css('border', '0.5px solid #4E5A6A');
 
     this.hideCompleted = function() {
         if ($('.filters-container').length === 0) {
