@@ -106,7 +106,7 @@ function Bf4AdapterH(plugin) {
     this.buldForm = function() {
         var plugin = this,
             form = '\
-        <div id="hidden-assigments-status" style="display: none;">1</div>\n\
+        <div id="hidden-assigments-status">1</div>\n\
         <div class="filters-container">\n\
             <div class="row-tight spacing-top-tight">\n\
                 <div class="filter-col span1-04 box box-content">\n\
