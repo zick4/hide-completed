@@ -97,7 +97,7 @@ function Bf4AdapterH(plugin) {
     $('.stat-list-col > li').css('border', '0.1px solid #4E5A6A');
 
     this.hideCompleted = function() {
-        if ($('#hidden-assigments-status').length === 0) {
+        if ($('.filters-container').length === 0) {
             this.buldForm();
         }
         this.filter();
