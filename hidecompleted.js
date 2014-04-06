@@ -133,6 +133,10 @@ function Bf4AdapterH(plugin) {
         </div>',
             status = plugin.storage('hidden-assigments-status');
 
+            console.info("Wczytany status");
+            console.log(status);
+
+
         if (status == 2) {
             classAttribute = 'off';
             text = 'Zadania ukończone są ukryte';
@@ -146,6 +150,8 @@ function Bf4AdapterH(plugin) {
             text = 'Wszystkie zadania są widoczne',
             classAttribute='on';
             plugin.storage('hidden-assigments-status', 1);
+            console.info("Zapisany status 1");
+            console.log(plugin.storage('hidden-assigments-status'));
         }
         
         $('.submenu.margin-top').after(form.format(status, classAttribute, text));
@@ -168,6 +174,8 @@ function Bf4AdapterH(plugin) {
             }
             
             plugin.storage('hidden-assigments-status', $("#hidden-assigments-status").text());
+            console.info("Zapisany status");
+            console.log(plugin.storage('hidden-assigments-status'));
             adapter.filter();
         });
             
