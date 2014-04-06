@@ -50,7 +50,6 @@ BBLog.handle("add.plugin", {
             var isBf3 = Boolean(document.URL.match(/bf3\/.*assignments.*$/)),
                 isBf4 = Boolean(document.URL.match(/bf4\/.*assignments.*/));
 
-            delete(plugin.adapterH);
             // wczytanie odpowiedniego adaptera
             if (isBf3) {
                 plugin.adapterH = new Bf3AdapterH(plugin);
