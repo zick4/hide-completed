@@ -124,6 +124,7 @@ function Bf4AdapterH(plugin) {
         </div>';
         
         $('.submenu.margin-top').after(form);
+        console.info($("#hidden-assigments-status"));
         $('.filters-container li').click(function(){
             console.info("klik");
             if ($("#hidden-assigments-status").val() === 1) {
