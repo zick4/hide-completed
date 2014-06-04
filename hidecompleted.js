@@ -194,3 +194,5 @@ function Bf4AdapterH(plugin) {
         });
     };
 }
+ 
+ 
